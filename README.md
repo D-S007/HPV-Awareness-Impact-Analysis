@@ -30,7 +30,7 @@ This project utilizes a modern data stack to showcase skills from data ingestion
 ## 🛠️ How to Run This Project
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/your-username/HPV-Awareness-Impact-Analysis.git](https://github.com/your-username/HPV-Awareness-Impact-Analysis.git)
+   git clone [https://github.com/d-s007/HPV-Awareness-Impact-Analysis.git](https://github.com/d-s007/HPV-Awareness-Impact-Analysis.git)
    ```
 2. Navigate to the project directory:
    ```bash
