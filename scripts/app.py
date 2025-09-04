@@ -10,7 +10,7 @@ st.set_page_config(page_title="HPV Awareness Dashboard", layout="wide")
 # Loading data
 @st.cache_data
 def load_data():
-    df = pd.read_csv("/home/Davcote/Desktop/HPV-Awareness-Impact-Analysis/data/processed_data/cleaned_hpv_data.csv")
+    df = pd.read_csv("data/processed_data/cleaned_hpv_data.csv")
     return df
 
 # Initializing session state
