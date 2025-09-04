@@ -17,3 +17,13 @@ datetime
 pingouin
 
 sqlalchemy
+
+streamlit
+sweetviz
+plotly
+plotly-express
+
+dtale
+ydata-profiling
+
+shap
