@@ -9,7 +9,7 @@ st.set_page_config(page_title="HPV Awareness Dashboard", layout="wide")
 
 st.markdown(
     """
-    🔗 [GitHub](https://github.com/d-s007HPV-Awareness-Impact-Analysis) | 📝 [Blog](https://yourbloglink.com)
+    🔗 [GitHub](https://github.com/d-s007/HPV-Awareness-Impact-Analysis) | 📝 [Blog](https://medium.com/@davidsingh.blogs/hpv-awareness-impact-analysis-end-to-end-data-analytics-project-2884fa7d6ea2)
     """,
     unsafe_allow_html=True
 )
