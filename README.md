@@ -1,4 +1,4 @@
-# HPV Awareness Campaign: Impact Analysis and Predictive Modeling
+# HPV Awareness Campaign: Statistical Impact Analysis 
 ![alt text](documentation/Dashboard.gif)
 - Link : https://hpv-awareness-impact-analysis-david-singh.streamlit.app/
 
