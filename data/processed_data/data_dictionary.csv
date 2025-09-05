@@ -1,0 +1,21 @@
+Column,Description
+Sno,Unique participant ID
+Age,"Age group (0: 15-19, 1: 19-24, 2: 24+)"
+Gender,"Gender (0: Female, 1: Male)"
+Place_of_Residency,"Residency (0: Rural, 1: Semi-Urban, 2: Urban)"
+Education,"Education level (0: High school, 1: Undergrad, 2: Post-grad)"
+Vaccination_Status,"Vaccination status (0: Irregular, 1: Regular, 2: Not vaccinated)"
+Health_Care_Access,"Healthcare access (0: Easy, 1: Not accessible, 2: Not interested)"
+Occupation_of_Parents,"Parents’ occupation (0: Professional, 1: Retired, 2: Skilled, 3: Unemployed)"
+Family_Income_per_Month,"Family income (0: <14,997, 1: 14,977-22,494, 2: 22,495-37,492, 3: 37,493-74,999, 4: 75,000+)"
+pre_test_score,Pre-intervention knowledge score
+post_test_score,Post-intervention knowledge score
+score_improvement,Labeled age group
+Age_Label,Labeled gender
+Gender_Label,Labeled residency
+Place_of_Residency_Label,Labeled education
+Education_Label,Labeled vaccination status
+Vaccination_Status_Label,Labeled healthcare access
+Health_Care_Access_Label,Labeled parents’ occupation
+Occupation_of_Parents_Label,Labeled family income
+Family_Income_per_Month_Label,Score improvement (post - pre)
