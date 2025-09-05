@@ -27,3 +27,8 @@ dtale
 ydata-profiling
 
 shap
+
+kaleido
+
+pandoc
+pypandoc

@@ -1,5 +1,5 @@
 EXTRA/
-venv/
+myenv/
 HPV-Awareness-Impact-Analysis.code-workspace
 
 # Notebook checkpoints
