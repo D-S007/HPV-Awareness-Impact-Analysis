@@ -7,6 +7,13 @@ import json
 # Page configuration
 st.set_page_config(page_title="HPV Awareness Dashboard", layout="wide")
 
+st.markdown(
+    """
+    🔗 [GitHub](https://github.com/d-s007HPV-Awareness-Impact-Analysis) | 📝 [Blog](https://yourbloglink.com)
+    """,
+    unsafe_allow_html=True
+)
+
 # Loading data
 @st.cache_data
 def load_data():
@@ -36,6 +43,7 @@ filtered_df = df[
 
 # Title
 st.title("HPV Awareness Impact Analysis Dashboard")
+st.divider()
 
 # Demographic Distributions
 st.header("Demographic Distributions")
@@ -63,6 +71,8 @@ with col2:
     fig_gender = px.pie(values=gender_counts.values, names=gender_counts.index, title="Gender Distribution")
     st.plotly_chart(fig_gender, use_container_width=True)
 
+st.divider()
+
 # Score Distributions
 st.header("Knowledge Score Improvement")
 fig_scores = go.Figure()
@@ -70,6 +80,8 @@ fig_scores.add_trace(go.Histogram(x=filtered_df['pre_test_score'], name="Pre-Tes
 fig_scores.add_trace(go.Histogram(x=filtered_df['post_test_score'], name="Post-Test Score", opacity=0.5, histnorm='density'))
 fig_scores.update_layout(title="Pre- and Post-Test Score Distributions", xaxis_title="Knowledge Score", yaxis_title="Density", barmode="overlay")
 st.plotly_chart(fig_scores, use_container_width=True)
+
+st.divider()
 
 # Score Improvement by Demographics
 st.header("Score Improvement by Demographics")
@@ -87,9 +99,72 @@ with col4:
                             labels={"score_improvement": "Score Improvement (Post - Pre)", "Gender_Label": "Gender"})
     st.plotly_chart(fig_box_gender, use_container_width=True)
 
-# Interesting Fact
-st.header("Interesting Fact")
-st.write("The intervention was most effective for high school students, with some achieving score improvements up to 25 points, likely due to lower baseline knowledge compared to post-graduates, who showed minimal gains due to a ceiling effect.")
+st.divider()
+
+# -- Correlation Heatmap --
+st.header("Correlation Heatmap")
+corr_matrix = filtered_df.corr(numeric_only=True)
+fig_corr = px.imshow(corr_matrix, text_auto=True, color_continuous_scale="RdBu_r",
+                     aspect="auto", title="Correlation Heatmap")
+st.plotly_chart(fig_corr, use_container_width=True)
+
+st.divider()
+
+# -- Statistical Analysis Results --
+import pickle
+
+with open("models/stats_results.pkl", "rb") as f:
+    stats_results = pickle.load(f)
+
+st.header("Statistical Analysis Results")
+
+# Show summary table
+st.subheader("Overall Test Results")
+st.dataframe(stats_results["summary_table"])
+
+# Normality Tests
+st.subheader("Normality Checks")
+st.write(f"Pre-Test: W={stats_results['normality']['pre']['stat']:.3f}, "
+         f"p={stats_results['normality']['pre']['p']:.3f}")
+st.write(f"Post-Test: W={stats_results['normality']['post']['stat']:.3f}, "
+         f"p={stats_results['normality']['post']['p']:.3f}")
+
+# Paired Tests
+st.subheader("Pre vs Post Tests")
+st.write(f"Paired t-test: t={stats_results['paired_tests']['t_test']['t']:.3f}, "
+         f"p={stats_results['paired_tests']['t_test']['p']:.3f}")
+st.write(f"Wilcoxon Signed-Rank: W={stats_results['paired_tests']['wilcoxon']['W']:.3f}, "
+         f"p={stats_results['paired_tests']['wilcoxon']['p']:.3f}")
+st.write(f"Cohen's d: {stats_results['paired_tests']['cohens_d']:.2f}")
+st.write(f"Statistical Power: {stats_results['paired_tests']['power']:.3f}")
+
+# ANOVA
+st.subheader("ANOVA by Education")
+anova = stats_results['anova']['education']
+st.write(f"F={anova['F']:.3f}, p={anova['p']:.3f}, Bonferroni-corrected p={anova['p_corr']:.3f}")
+
+# Reliability
+st.subheader("Reliability (Cronbach's Alpha)")
+st.write(f"Pre-Test: {stats_results['cronbach']['alpha_pre']:.3f}")
+st.write(f"Post-Test: {stats_results['cronbach']['alpha_post']:.3f}")
+
+# -- Data Dictionary --
+with open("models/data_dictionary.pkl", "rb") as f:
+    data_dict = pickle.load(f)
+
+st.header("Data Dictionary")
+st.table(pd.DataFrame(list(data_dict.items()), columns=["Variable", "Description"]))
+st.divider()
+
+# -- Key Insights & Actionable Conclusions --
+st.header("Key Insights & Actionable Conclusions")
+st.markdown("""
+- **Awareness improved significantly** after the intervention (large effect size).
+- **Reliability** of the survey tool is acceptable (Cronbach’s α > 0.7).
+- **Score improvements strongest** among low baseline groups (e.g., high school students).
+- **Demographics had minimal influence**, except residency: urban > semi-urban > rural.
+- **Action:** Tailor more support for rural participants, reinforce higher scorers to prevent plateau.
+""")
 
 # Conclusion
 st.header("Conclusion")
