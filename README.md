@@ -1,4 +1,6 @@
 # HPV Awareness Campaign: Impact Analysis and Predictive Modeling
+![alt text](documentation/Dashboard.gif)
+- Link : https://hpv-awareness-impact-analysis-david-singh.streamlit.app/
 
 ## 🎯 Project Objective
 This project analyzes the effectiveness of an educational intervention aimed at increasing awareness about HPV among youth. The analysis moves from initial data cleaning and statistical testing to building a predictive model that identifies the demographic factors most crucial for successful knowledge uptake. The final results are presented in an interactive Power BI dashboard.
@@ -40,7 +42,3 @@ This project utilizes a modern data stack to showcase skills from data ingestion
    ```bash
    pip install -r requirements.txt
    ```
-4. Run the Jupyter Notebooks in the following order:
-   - `01_Data_Ingestion_and_DB_Setup.ipynb`
-   - `02_EDA_and_Statistical_Analysis.ipynb`
-   - `03_Predictive_Modeling.ipynb`
