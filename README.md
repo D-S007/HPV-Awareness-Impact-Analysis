@@ -1,44 +1,72 @@
 # HPV Awareness Campaign: Statistical Impact Analysis 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.0%2B-red)](https://streamlit.io/)
+
 ![alt text](documentation/Dashboard.gif)
-- Link : https://hpv-awareness-impact-analysis-david-singh.streamlit.app/
+- Dashboard Link : https://hpv-awareness-impact-analysis-david-singh.streamlit.app/
 
-## 🎯 Project Objective
-This project analyzes the effectiveness of an educational intervention aimed at increasing awareness about HPV among youth. The analysis moves from initial data cleaning and statistical testing to building a predictive model that identifies the demographic factors most crucial for successful knowledge uptake. The final results are presented in an interactive Power BI dashboard.
+## Project Overview
+This repository contains an end-to-end data analysis pipeline for evaluating the impact of an HPV awareness intervention among youth in District Sitapur, India. It includes data ingestion, cleaning, EDA, statistical analysis, automated reporting, and an interactive Streamlit dashboard.
 
----
-## ❓ Key Questions
-1.  What was the demographic makeup of the study participants?
-2.  Was there a statistically significant increase in HPV knowledge after the intervention?
-3.  Which demographic groups showed the most significant improvement?
-4.  Can we predict a participant's post-intervention knowledge score based on their demographic profile?
-5.  What are the most important factors influencing knowledge improvement?
+### Key Features
+- **Data Pipeline**: Ingest raw CSV/Excel into SQLite, clean and merge datasets.
+- **EDA**: Interactive Plotly visualizations for demographics and scores.
+- **Stats**: Tests like paired t-test, Wilcoxon, ANOVA, Cronbach's Alpha.
+- **Reporting**: Automated DOCX report generation.
+- **Dashboard**: Streamlit app for filtering and exploring results.
 
----
-## ⚙️ Tech Stack & Workflow
-This project utilizes a modern data stack to showcase skills from data ingestion to final reporting.
+### Directory Structure
+- `data/`: Raw and processed data (e.g., `cleaned_hpv_data.csv`).
+- `models/`: Pickled artifacts (e.g., stats results, figures).
+- `notebooks/`: Jupyter notebooks for each stage (01-04).
+- `scripts/`: Utility scripts (e.g., `hpv_db_utils.py`, `ingestion_db.py`).
+- `reports/`: Generated DOCX and figures.
+- `logs/`: Log files for debugging.
+- `app.py`: Streamlit dashboard script.
 
-
-1.  **Data Ingestion & Storage:** Raw CSV data is cleaned and structured using **Pandas**, then loaded into a **SQLite** database.
-2.  **Analysis & Modeling:** Data is queried from SQLite into Jupyter Notebooks. **Pandas** and **NumPy** are used for manipulation, **Matplotlib/Seaborn** for initial visualization, **SciPy** for statistical testing, and **Scikit-learn** for machine learning.
-3.  **Reporting & Visualization:** Key analytical findings and predictions are visualized in an interactive **Power BI** dashboard connected to the SQLite database.
-
----
-## 🚀 Key Findings
-* The educational intervention led to a statistically significant increase in mean knowledge scores from X to Y (p < 0.001).
-* The feature importance analysis from our Random Forest model revealed that **Education Level** and **Place of Residency** are the strongest predictors of post-intervention knowledge.
-* [Add a compelling screenshot of your Power BI dashboard here]
-
----
-## 🛠️ How to Run This Project
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/d-s007/HPV-Awareness-Impact-Analysis.git](https://github.com/d-s007/HPV-Awareness-Impact-Analysis.git)
+## Installation
+1. Clone the repo:
    ```
-2. Navigate to the project directory:
-   ```bash
+   git clone https://github.com/d-s007/HPV-Awareness-Impact-Analysis.git
    cd HPV-Awareness-Impact-Analysis
    ```
-3. Install the required packages:
-   ```bash
+2. Install dependencies:
+   ```
    pip install -r requirements.txt
    ```
+   (Assumed requirements: pandas, numpy, sqlite3, plotly, streamlit, python-docx, scipy, pingouin, statsmodels)
+
+## Usage
+### Run Notebooks
+- Start with `01_Data_Loading_and_Cleaning.ipynb` to process data.
+- Proceed to EDA, Stats, and Reporting notebooks.
+
+### Database Setup
+- Run `ingestion_db.py` to ingest raw data into `data/database/HPV.db`.
+
+### Dashboard
+- Launch the Streamlit app:
+  ```
+  streamlit run scripts/app.py
+  ```
+- Access at `http://localhost:8501`. Use sidebar filters to explore.
+
+### Generate Report
+- Run `04_Reporting.ipynb` to create `reports/final/HPV_Awareness_Impact_Report.docx`.
+
+## Data Sources
+- Raw data: Demographics, pre/post-test scores (33 questions each).
+- Processed: Merged CSV with labels and improvement scores.
+
+## Key Results
+- Significant knowledge improvement (p<0.001, large effect size).
+- Insights: Tailor support for rural and low-education groups.
+
+
+## License
+MIT License. See [LICENSE](LICENSE) for details.
+
+## Acknowledgments
+- Inspired by public health data needs.
+- Tools: Python ecosystem, Streamlit.
