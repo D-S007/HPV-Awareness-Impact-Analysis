@@ -23,7 +23,7 @@ This repository contains an end-to-end data analysis pipeline for evaluating the
 - `scripts/`: Utility scripts (e.g., `hpv_db_utils.py`, `ingestion_db.py`).
 - `reports/`: Generated DOCX and figures.
 - `logs/`: Log files for debugging.
-- `app.py`: Streamlit dashboard script.
+- `scripts/app.py`: Streamlit dashboard script.
 
 ## Installation
 1. Clone the repo:
