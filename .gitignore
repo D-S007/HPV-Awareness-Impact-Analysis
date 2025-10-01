@@ -1,6 +1,7 @@
 EXTRA/
 myenv/
 HPV-Awareness-Impact-Analysis.code-workspace
+raw_data.xlsx
 
 # Notebook checkpoints
 .ipynb_checkpoints/
